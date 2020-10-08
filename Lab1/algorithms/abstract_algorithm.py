@@ -4,8 +4,11 @@
 # eps - accuracy of algorithm
 # params - some additional parameters for algorithm
 class AbstractAlgorithm:
-    def __init__(self, a: float, b: float, eps: float, *params) -> None:
-        pass
+    def __init__(self, func, a: float, b: float, eps: float, *params) -> None:
+        self.eps = eps
+        self.b = b
+        self.a = a
+        self.func = func
 
     def calculate(self) -> float:
         pass
