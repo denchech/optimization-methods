@@ -31,4 +31,14 @@ functions = [
         'interval': {'a': 0.5, 'b': 2.5},
         'answer': 2.2219
     },
+    {
+        'function': lambda x: math.sin(x ** 2) / x,
+        'interval': {'a': 2, 'b': 4},
+        'answer': 3.3091
+    },
+{
+        'function': lambda x: x ** 4 + x ** 3 - 5 * x ** 2,
+        'interval': {'a': -3, 'b': 2},
+        'answer': -2
+    }
 ]
