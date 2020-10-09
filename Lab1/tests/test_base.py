@@ -1,8 +1,8 @@
 from unittest import TestCase
 
-from algorithms.abstract_algorithm import AbstractAlgorithm
-from tests.test_functions import functions
-from tests.test_functions import accuracy
+from lab1.algorithms.abstract_algorithm import AbstractAlgorithm
+from lab1.tests.test_functions import functions
+from lab1.tests.test_functions import accuracy
 
 
 class TestBase(TestCase):
