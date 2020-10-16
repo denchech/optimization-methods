@@ -18,7 +18,7 @@ class BrentAlgorithm(AbstractAlgorithm):
             g = e
             e = d
 
-            if (x != v or v != w or x != w) and (fx != fv or fv != fw or fx != fw):
+            if (x != v or v != w) and (fx != fv or fv != fw):
                 u = ParabolasAlgorithm.get_minimum(x, fx, w, fw, v, fv)
             if a + eps <= u <= b - eps and abs(u - x) <= g / 2:
                 d = abs(u - x)

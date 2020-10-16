@@ -1,3 +1,4 @@
+from lab1.algorithms.brent_algorithm import BrentAlgorithm
 from lab1.algorithms.dichotomy_algorithm import DichotomyAlgorithm
 from lab1.algorithms.fibonacci_algorithm import FibonacciAlgorithm
 from lab1.algorithms.golden_ratio_algorithm import GoldenRatioAlgorithm
@@ -14,7 +15,8 @@ def draw_all_plots():
         DichotomyAlgorithm(),
         FibonacciAlgorithm(),
         GoldenRatioAlgorithm(),
-        ParabolasAlgorithm()
+        ParabolasAlgorithm(),
+        BrentAlgorithm()
     ]:
         draw_plot_function_calls_from_eps(algorithm, 1e-5, 1000)
 
