@@ -21,3 +21,9 @@ class TestGoldenRatioAlgorithm(TestBase):
 
     def test_calculate_fifth(self):
         super().calculate(4)
+
+    def test_calculate_multimodal_first(self):
+        super().calculate(5)
+
+    def test_calculate_multimodal_second(self):
+        super().calculate(6)
