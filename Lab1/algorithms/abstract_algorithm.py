@@ -21,5 +21,5 @@ class AbstractAlgorithm:
     def calculate(self, func, a: float, b: float, eps: float) -> AlgorithmResult:
         pass
 
-    def get_name(self):
+    def get_name(self) -> str:
         pass

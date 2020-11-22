@@ -18,7 +18,7 @@ def draw_all_plots():
         ParabolasAlgorithm(),
         BrentAlgorithm()
     ]:
-        draw_plot_function_calls_from_eps(algorithm, 1e-5, 1000)
+        draw_plot_function_calls_from_eps(algorithm, 1e-2, 100)
 
 
 if __name__ == '__main__':

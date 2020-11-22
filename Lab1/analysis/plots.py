@@ -16,6 +16,14 @@ def draw_plot_function_calls_from_eps(algorithm: AbstractAlgorithm, e: float, po
 
     for i in function_numbers:
         f = functions[i]
+        result = algorithm.calculate(f['function'], f['interval']['a'], f['interval']['b'], x[0])
+        with open("points/{0}{1}.csv".format(algorithm.get_name(), str(i)), "w+") as d_file:
+            for interval in result.intervals:
+                column1 = "(" + ','.join(map(str, interval['interval'])) + ")"
+                column2 = ';'.join(map(str, interval['points']))
+                row = ';'.join([column1, column2])
+                d_file.write(row + '\n')
+
         y = [algorithm.calculate(f['function'], f['interval']['a'], f['interval']['b'], x[i - 1]).func_calls
              for i in range(1, points + 1)]
         ax.plot(lnx, y, color=colors[j], linestyle=line_styles[j], label=f['tex_string'])
