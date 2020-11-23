@@ -44,7 +44,7 @@ functions = [
     },
     {
         'function': lambda x: x ** 4 + x ** 3 - 5 * x ** 2,
-        'interval': {'a': -3, 'b': 2},
+        'interval': {'a': -2.5, 'b': 1},
         'answer': -2,
         'tex_string': r'$x^4 + x^3 - 5x^2$'
     }

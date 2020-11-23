@@ -6,12 +6,23 @@ class GoldenRatioAlgorithm(AbstractAlgorithm):
 
     def calculate(self, func, a: float, b: float, eps: float) -> AlgorithmResult:
         result = AlgorithmResult()
+        x1 = b - (b - a) / self.__K
+        x2 = a + (b - a) / self.__K
+        y1 = func(x1)
+        y2 = func(x2)
         while abs(b - a) >= eps:
-            x1 = b - (b - a) / self.__K
-            x2 = a + (b - a) / self.__K
 
-            y1 = func(x1)
-            y2 = func(x2)
+            if y1 < y2:
+                b = y2
+                y2 = y1
+                x2 = x1
+                x1 = b - (b - a) / self.__K
+                y1 = func(x1)
+            else:
+                a = x1
+                y1 = y2
+                x2 = a + (b - a) / self.__K
+                y2 = func(x2)
 
             result.add_interval_with_points((a, b), [(x1, y1), (x2, y2)])
 
