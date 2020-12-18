@@ -6,6 +6,7 @@ from lab1.algorithms.dichotomy_algorithm import DichotomyAlgorithm
 from lab2.algorithms.fastest_descent_algorithm import FastestDescent
 from lab2.algorithms.projection_descent_algorithm import ProjectionDescent
 from lab2.algorithms.ravine_descent_algorithm import RavineDescent
+from lab2.algorithms.coordinate_descent import CoordinateDescent
 from lab2.projections.projection import LineProjection
 
 
@@ -48,7 +49,8 @@ def draw_lines(func_number, algorithm, start, start2=None, additional_line=None)
         start2 = {x1: start2[0], x2: start2[1]}
     r = algorithm.calculate(func, 1e-6,
                             {x1: start[0], x2: start[1]},
-                            start2=start2)
+                            start2=start2,
+                            arguments=[x1, x2])
 
     if additional_line is not None:
         ax.plot(additional_line[0], additional_line[1], color='grey')
@@ -79,7 +81,9 @@ def draw_plots(func, algorithm, start, start2=None):
     plt.xlabel('log10(eps)')
     for eps_pow in x:
         print(eps_pow)
-        y.append(algorithm.calculate(func, 10 ** eps_pow, start, start2=start2).iterations)
+        y.append(
+            algorithm.calculate(func, 10 ** eps_pow, start, start2=start2, arguments=list(start.keys())).iterations
+        )
     plt.grid()
     plt.plot(x, y)
     plt.show()
@@ -142,10 +146,26 @@ def analyze_rgd():
     print(get_table([r1, r2, r3, r4], [ff1, ff2, ff3, f]).get_string())
 
 
+def analyze_cd():
+    x1, x2 = sp.symbols('x1 x2')
+    draw_plots(f2(x1, x2), CoordinateDescent(6e-3, 5000), {x1: 0.0, x2: -1.0})
+
+    r1, ff1 = draw_lines(0, CoordinateDescent(6e-3, 5000), [-0.1, -1.0])
+    r2, ff2 = draw_lines(1, CoordinateDescent(0.037, 5000), [-2.0, -2.0])
+    r3, ff3 = draw_lines(2, CoordinateDescent(0.01, 7000), [4.0, 0.1])
+
+    alg = CoordinateDescent(0.01, 3000)
+    x1, x2, x3, x4 = sp.symbols('x1 x2 x3 x4')
+    ff4 = f4(x1, x2, x3, x4)
+    r4 = alg.calculate(ff4, 1e-6, {x1: 1, x2: -1, x3: 1, x4: -1}, arguments=[x1, x2, x3, x4])
+    print(get_table([r1, r2, r3, r4], [ff1, ff2, ff3, ff4]).get_string())
+
+
 def main():
     analyze_fgd()
     analyze_pgd()
     analyze_rgd()
+    analyze_cd()
 
 
 if __name__ == '__main__':
