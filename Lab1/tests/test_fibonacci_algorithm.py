@@ -1,12 +1,11 @@
 from lab1.algorithms.abstract_algorithm import AbstractAlgorithm
+from lab1.algorithms.fibonacci_algorithm import FibonacciAlgorithm
 from lab1.tests.test_base import TestBase
-from lab1.algorithms.parabolas_algorithm import ParabolasAlgorithm
-import math
 
 
-class TestParabolasAlgorithm(TestBase):
+class TestGoldenRatioAlgorithm(TestBase):
     def algorithm(self) -> AbstractAlgorithm:
-        return ParabolasAlgorithm()
+        return FibonacciAlgorithm()
 
     def test_calculate_first(self):
         super().calculate(0)

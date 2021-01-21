@@ -6,8 +6,6 @@ from lab1.tests.test_functions import accuracy
 
 
 class TestBase(TestCase):
-    __PLACES = 4
-
     def algorithm(self) -> AbstractAlgorithm:
         pass
 
@@ -21,4 +19,4 @@ class TestBase(TestCase):
 
         result = algorithm.calculate(func, a, b, eps)
 
-        self.assertAlmostEqual(result, function_info['answer'], places=self.__PLACES)
+        self.assertAlmostEqual(result.answer, function_info['answer'], delta=eps)
